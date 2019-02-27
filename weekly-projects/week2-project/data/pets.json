@@ -1,0 +1,18 @@
+[
+	{
+		"id": 1,
+		"name": "Maltese Poodle",
+		"category": "Dog",
+		"description": "Maltese are bred to be companion dogs. They are extremely lively and playful, and even as a Maltese ages, its energy level and playful demeanor remain fairly constant.",
+		"image": "https://40.media.tumblr.com/tumblr_m7wmwzeMM01qdt6bmo1_500.jpg",
+		"price": 100.00
+	},
+	{
+		"id": 2,
+		"name": "African Grey Parrot",
+		"category": "Bird",
+		"description": "The African Grey Parrot is probably the most popular pet bird and is known to be the most intelligent and the most talkative of the parrot family.",
+		"image": "https://upload.wikimedia.org/wikipedia/commons/2/28/Psittacus_erithacus_-perching_on_tray-8d.jpg",
+		"price": 250.00
+	}
+]

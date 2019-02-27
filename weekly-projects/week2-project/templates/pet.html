@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+{% block content %}
+<h1>{{ pet.name }}</h1>
+    <div class="row">
+        <div class="col-6">
+          <div class="card mt-3">
+            <img src="{{ pet.image }}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{ pet.description }}</h5>
+              <a href="{{ url_for('add_pet_to_cart', pet_id=pet.id) }}" class="btn btn-primary btn-block">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+
+
+{% endblock %}

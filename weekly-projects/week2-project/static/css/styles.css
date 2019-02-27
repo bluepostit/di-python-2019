@@ -1,0 +1,41 @@
+.pet-card .pet-price {
+	text-align: right;
+}
+
+.cart {
+	width: 60%;
+}
+
+.cart .cart-item {
+	display: flex;
+	flex: row;
+	justify-content: space-between;
+}
+
+.cart-item .pet-details {
+	display: flex;
+	flex: row;
+}
+
+.cart-item .pet-details img {
+	width: 50px;
+	border: 1px gray solid;
+}
+
+.cart-item .pet-name {
+	margin: 0 10px;
+}
+
+.cart-total-row {
+	display: flex;
+	flex: row;
+	justify-content: end;
+	align-items: flex-end;
+	width: 62%;
+}
+
+.cart-total-row .cart-total {
+	text-align: right;
+	padding-right: 25px;
+	padding-left: 10px;
+}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Our Pets{% endblock %}
+{% block content %}
+<h1>Our Pets</h1>
+<div class="row pb-5">
+  {% for pet in pets %}
+    <div class="col-4">
+      <div class="card mt-3">
+        <div style="overflow: hidden; height: 15rem;">
+          <img src="{{ pet.image }}" class="card-img-top">
+        </div>
+
+        <div class="card-body pet-card">
+          <h5 class="card-title pet-name">{{ pet.name }}</h5>
+          <h5 class="card-title pet-price">${{ pet.price }}</h5>
+          <a href="{{ url_for('show_pet', pet_id=pet.id) }}" class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
