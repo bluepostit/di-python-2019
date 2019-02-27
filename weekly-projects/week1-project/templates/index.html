@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <title>SocialNet</title>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">SocialNet</a>
+</nav>
+
+
+  <div class="container">
+    
+    <div class="row pb-5">
+      {% for profile in profiles %}
+        <div class="col-4">
+          <div class="card mt-3">
+            <div style="overflow: hidden; height: 15rem;">
+              <img src="{{ profile.picture }}" class="card-img-top">
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h5>
+              <a href="{{ url_for('profile', username=profile.username) }}" class="btn btn-primary">View Profile</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</body>
+</html>

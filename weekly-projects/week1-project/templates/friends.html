@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <title>Friends</title>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">SocialNet</a>
+</nav>
+
+
+  <div class="container">
+    <div class="row pt-5 pb-3">
+      <div class="col-12">
+        <h3>{{ profile.first_name }} {{ profile.last_name }}'s Friends</h3>
+      </div>
+    </div>
+    
+    <div class="row pb-5">
+      {% for friend in friends %}
+        <div class="col-12">
+          <div class="card mt-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ friend.first_name }} {{ friend.last_name }}</h5>
+              <a href="{{ url_for('profile', username=friend.username) }}" class="btn btn-primary">View Profile</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</body>
+</html>
