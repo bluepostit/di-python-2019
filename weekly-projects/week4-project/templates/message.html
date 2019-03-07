@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>{{ message.subject }}</h1>
+  <div class="mx-5">
+    <div class="row">
+      <div class="col-sm-2">From: </div>
+      <div class="col-sm-10">{{ message.from }}</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">To: </div>
+      <div class="col-sm-10">{{ message.to }}</div>
+    </div>
+    <div class="message-pane w-100">
+      {{ message.body }}
+    </div>
+  </div>
+</div>
+
+  {% endblock %}

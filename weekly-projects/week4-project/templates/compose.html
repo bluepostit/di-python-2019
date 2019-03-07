@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>New Message</h1>
+  <div class="mx-5">
+    <form action="{{ url_for('compose') }}" method="post">
+      <div class="row form-group">
+        <label for="inputTo" class="col-sm-2 col-form-label">To: </label>
+        <div class="col-sm-10">
+          <input name="to" class="form-control" id="inputTo" required>
+        </div>
+      </div>
+      <div class="row form-group">
+        <label for="inputSubject" class="col-sm-2 col-form-label">Subject: </label>
+        <div class="col-sm-10">
+          <input name="subject" class="form-control" id="inputSubject" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <textarea class="message-pane w-100" name="body" required></textarea>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-1 align-self-end">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </form>
+    
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,12 @@
+.message-pane {
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px 0px;
+	min-height: 250px;
+}
+
+.btn-compose img {
+	margin-right: 5px;
+
+}

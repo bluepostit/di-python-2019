@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+  <h1>Your Messages</h1>
+  <div class="row mx-5 justify-content-center">
+    <div class="col-md-10">
+      {% if messages %}
+      <div class="list-group">
+        {% for message in messages %}
+        <a href="{{ url_for('show_message', id=message.id) }}" class="list-group-item list-group-item-action">
+          <div class="row justify-content-between">
+            <div class="col-8">
+              <img src="{{ url_for('static', filename='icons/triangle-right.svg') }}" class="svg-icon">
+              {{ message.subject }}</div>
+            <div class="col-4">From: <span class="font-italic">{{ message.from }}</span></div>
+          </div>
+          </a>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <h4 class="text-center">You have no messages</h4>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
