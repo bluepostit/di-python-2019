@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>
+    {%if has_guessed %}
+        You got it!
+    {% else %}
+        Guess the Word
+    {% endif %}
+</h1>
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron game">
+            <h1 class="display-4 public-word">
+                {% for letter in word %}
+                    {{ letter }}
+                {% endfor %}
+            </h1>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Your guesses:</h3>
+                    <p class="lead guesses">
+                        {{ guesses|join(', ') }}
+                    </p>
+                </div>
+                <div class="col-6">
+                    <h3>Next guess?</h3>
+                    <form method="post" action="{{ url_for('guess_text') }}">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="guess">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Guess</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

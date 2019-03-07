@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Hangman</h1>
+<div class="row pb-5">
+    <div class="col-4">
+      <div class="card mt-3">
+        <div style="overflow: hidden; height: 15rem;">
+          <img src="https://barnyarn.files.wordpress.com/2013/04/chalkboard-hangman2.jpg" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <a href="{{ url_for('new_game') }}" class="btn btn-primary">New Game</a>
+        </div>
+      </div>
+    </div>    <div class="col-4">
+      <div class="card mt-3">
+        <div style="overflow: hidden; height: 15rem;">
+          <img src="https://i.ytimg.com/vi/xGWAZtD3IsQ/hqdefault.jpg" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <a href="{{ url_for('show_stats') }}" class="btn btn-primary">Stats</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

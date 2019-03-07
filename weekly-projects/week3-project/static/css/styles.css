@@ -1,0 +1,9 @@
+.game {
+    background-image: url(https://www.chromethemer.com/wallpapers/chromebook-wallpapers/download/chalkboard-1920x1080.jpg);
+    background-size: contain;
+    background-repeat: none;
+}
+
+.public-word {
+    text-align: center;
+}
