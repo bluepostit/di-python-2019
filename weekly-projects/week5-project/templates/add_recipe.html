@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+	<h1>Add New Recipe</h1>
+	<form action="{{ url_for('add_recipe') }}" method="post">
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Title:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="title" required>
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Description:</span>
+			</div>
+			<div class="col-md-9">
+				<textarea class="form-control" name="description" required></textarea>
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Image:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="image" required>
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Ingredients:</span>
+			</div>
+			<div class="col-md-9">
+				<textarea class="form-control" name="ingredients"></textarea>
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col text-right">
+				<button class="btn btn-primary" type="submit">Add</button>
+			</div>
+		</div>
+	</form>
+
+</div>
+{% endblock %}

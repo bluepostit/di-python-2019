@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row mx-3 mb-3">
+    <div class="col">
+      <span class="h1 mx-3">Your Recipes</span>
+      {% if recipes|length > 0 %}
+        <a class="btn btn-primary" href="{{ url_for('add_recipe') }}">Add</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row mx-3 justify-content-center">
+    <div class="col-md-10">
+      {% if recipes %}
+      <div class="list-group">
+        {% for recipe in recipes %}
+        <a href="{{ url_for('show_recipe', recipe_id=recipe.recipe_id) }}" class="list-group-item list-group-item-action">
+          <div class="row justify-content-between">
+            <div class="col-8">
+              <img src="{{ url_for('static', filename='icons/beaker.svg') }}" class="svg-icon">
+              <span class="h3">{{ recipe.title }}</span>
+            </div>
+            <div class="col-4">{{ recipe.description }}</div>
+          </div>
+          </a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <h4 class="text-center">You have no recipes</h4>
+      <div class="text-center">
+        <a class="btn btn-primary" href="{{ url_for('add_recipe') }}">Add Recipe</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
