@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+	<div class="jumbotron">
+		<h1 class="display-4">
+			Welcome!
+		</h1>
+		<p class="lead">
+		All our tables are full right now. Our waiting staff will seat you as soon as possible.</p>
+		<a class="btn btn-primary" href="{{ url_for('customer_index') }}">Check Again</a>
+	</div>
+</div>
+{% endblock %}

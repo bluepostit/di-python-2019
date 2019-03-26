@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+  <title>{% block title %}Lunch@Liam's{% endblock %}</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ url_for('customer_index') }}">
+      <img src="{{ url_for('static', filename='icons/star.svg') }}" />
+      Lunch@Liam's
+    </a>
+    {% if session['username'] %}
+      <div>
+        <span class="text-light mr-3">{{ session['username'] }}</span>
+        <a class="" href="{{ url_for('logout') }}">Logout</a>
+      </div>
+    {% else %}
+
+    {% endif %}
+  </nav>
+  {% block content %}{% endblock %}
+</body>
+
+</html>
