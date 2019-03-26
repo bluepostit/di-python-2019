@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+  <span class="h1">{{ customer.last_name }}, {{ customer.first_name }}</span>
+  <a href="{{ url_for('edit_customer', customer_id=customer.customer_id) }}" class="btn btn-primary ml-3">Edit</a>
+  <div class="mx-5">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="row">
+          <div class="col-4">
+            Name:
+          </div>
+          <div class="col-8">
+            {{ customer.last_name }}, {{ customer.first_name }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            Email:
+          </div>
+          <div class="col-8">
+            {{ customer.email }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            Phone:
+          </div>
+          <div class="col-8">
+            {{ customer.phone }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            Address 1:
+          </div>
+          <div class="col-8">
+            {{ customer.address1 }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            Address 2:
+          </div>
+          <div class="col-8">
+            {{ customer.address2 }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            Postal Code:
+          </div>
+          <div class="col-8">
+            {{ customer.postal_code }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            City:
+          </div>
+          <div class="col-8">
+            {{ customer.city }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            Country:
+          </div>
+          <div class="col-8">
+            {{ customer.country }}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col">
+            <span class="h5">New call:</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form action="{{ url_for('add_call') }}" method="post">
+              <input type="hidden" name="customer_id" value="{{ customer.customer_id }}">
+              <div class="form-group">
+                <textarea class="form-control" id="notes" name="notes"></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="list-group">
+          {% for call in calls %}
+          <div class="list-group-item">
+            <img src="{{ url_for('static', filename='icons/calendar.svg') }}" class="svg-icon">
+            <span class="h4">
+              {{ call.user.username}} @ {{ call.call_time }}
+            </span>
+            <p>{{ call.notes }}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

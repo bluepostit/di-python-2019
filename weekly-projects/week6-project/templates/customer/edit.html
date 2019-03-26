@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+	<h1>Edit Customer</h1>
+	<form action="{{ url_for('edit_customer', customer_id=customer.customer_id) }}" method="post">
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">First Name:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="first_name" required value="{{ customer.first_name }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Last Name:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="last_name" required value="{{ customer.last_name }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Email:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="email" class="form-control" name="email" required value="{{ customer.email }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Phone Number:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="phone" value="{{ customer.phone }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Address:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="address1" value="{{ customer.address1 }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Address 2:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="address2" value="{{ customer.address2 }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Postal Code:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="postal_code">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">City:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="city" required value="{{ customer.postal_code }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col-md-3">
+				<span class="h4">Country:</span>
+			</div>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="country" required value="{{ customer.country }}">
+			</div>
+		</div>
+		<div class="row mx-3 my-1">
+			<div class="col text-right">
+				<button class="btn btn-primary" type="submit">Add</button>
+			</div>
+		</div>
+	</form>
+
+</div>
+{% endblock %}
