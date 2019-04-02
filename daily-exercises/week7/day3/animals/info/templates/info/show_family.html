@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+	<h1>{{ family.name }} Family</h1>
+	<h4>Animals in this family:</h4>
+	<ul>
+	{% for animal in family.animal_set.all %}
+		<li>Legs: {{ animal.legs }}, height: {{ animal.height }}</li>
+	{% endfor %}
+	</ul>
+</div>
+{% endblock %}
