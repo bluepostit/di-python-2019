@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style type="text/css">
+      .status-missing {
+        font-weight: bold;
+        color: red;
+      }
+      .status-safe {
+        font-weight: bold;
+        color: green;
+      }
+    </style>
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    {% block nav %}
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="" />
+        Disaster Rescue
+      </a>
+      <div>
+        <form class="form-inline" method="post" action="#">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2" type="search" placeholder="Search People" aria-label="Search People" name="search" required>
+          <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+        </form>
+      </div>
+    </nav>
+    {% endblock %}
+    {% block content %}{% endblock %}
+  </body>
+</html>
