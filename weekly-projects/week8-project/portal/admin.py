@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# to do: register models for Admin app to use
+from .models import Event, Person, PersonStatus
+
+admin.site.register(Event)
+admin.site.register(Person)
+admin.site.register(PersonStatus)

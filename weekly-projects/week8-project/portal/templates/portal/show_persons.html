@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="container">
+	<h1>{{ main_heading }} <small>{{ heading_subtext }}</small></h1>
+
+	{% if persons and persons|length > 0 %}
+		<div class="list-group">
+			{% for person in persons.all %}
+				<a href="{% url 'portal:show_person' person_id=person.id %}" class="list-group-item list-group-item-action">{{ person }}</a>
+			{% endfor %}
+		</div>
+	{% else %}
+		<h3 class="ml-5">No persons found</h3>
+	{% endif %}
+</div>
+{% endblock %}

@@ -23,12 +23,12 @@
   <body>
     {% block nav %}
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{% url 'portal:index' %}">
         <img src="" />
         Disaster Rescue
       </a>
       <div>
-        <form class="form-inline" method="post" action="#">
+        <form class="form-inline" method="post" action="{% url 'portal:search_person' %}">
           {% csrf_token %}
           <input class="form-control mr-sm-2" type="search" placeholder="Search People" aria-label="Search People" name="search" required>
           <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>

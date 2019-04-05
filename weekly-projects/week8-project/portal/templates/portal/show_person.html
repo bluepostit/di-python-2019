@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Person Search{% endblock %}
+{% block content %}
+<div class="container">
+	<h1>{{ person }}</h1>
+	<div class="row border">
+		<span class="col-sm-3">First Name:</span>
+		<span class="col">{{ person.first_name }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">Last Name:</span>
+		<span class="col">{{ person.last_name }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">Other Name:</span>
+		<span class="col">{{ person.other_name }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3 font-weight-bold">Status:</span>
+		<span class="col status-{{ person.status.name }}">{{ person.status.name }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">ID Number:</span>
+		<span class="col">{{ person.id_number }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">Date of Birth:</span>
+		<span class="col">{{ person.date_of_birth }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">Mobile:</span>
+		<span class="col">{{ person.mobile }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">Email:</span>
+		<span class="col">{{ person.email }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">Description:</span>
+		<span class="col">{{ person.description }}</span>
+	</div>
+	<div class="row border">
+		<span class="col-sm-3">Last Updated:</span>
+		<span class="col">{{ person.updated }}</span>
+	</div>
+
+</div>
+{% endblock %}
