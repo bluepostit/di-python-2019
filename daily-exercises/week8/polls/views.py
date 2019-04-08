@@ -5,8 +5,15 @@ from .models import Choice, Question
 from .forms import QuestionForm
 
 
+def add_to_question_history(session, question):
+    viewed_questions = session.get('viewed_questions', [])
+    viewed_questions = set(viewed_questions)
+    viewed_questions.add(question.pk)
+    session['viewed_questions'] = list(viewed_questions)
+
+
 def index(request):
-	return HttpResponse('Hi there')
+    return HttpResponse('Hi there')
 
 
 def show_questions(request):
@@ -20,15 +27,20 @@ def show_question(request, question_id):
     # q = Question.objects.get(pk=question_id)
     q = get_object_or_404(Question, pk=question_id)
     choices = Choice.objects.filter(question=q).order_by('choice_text')
+
+    # this variable can have any name...
     raptor = {
         'question': q,
         'choices': choices
     }
+    # add to session
+    add_to_question_history(request.session, q)
+    # debug:
+    print(request.session['viewed_questions'])
     return render(request, 'polls/show-question.html', raptor)
 
 
 def vote(request, question_id, choice_id):
-    question = get_object_or_404(Question, pk=question_id)
     choice = get_object_or_404(Choice, pk=choice_id)
     choice.votes += 1
     choice.save()
@@ -37,18 +49,14 @@ def vote(request, question_id, choice_id):
 
 
 def add_question(request):
+    # any name will do (but 'form' would be best)
     f = QuestionForm()
     if request.method == 'POST':
         f = QuestionForm(request.POST)
         if f.is_valid():
-            question_text = f.cleaned_data['question_text']
-            publication_date = f.cleaned_data['publication_date']
-            question = Question(
-                question_text=question_text,
-                pub_date=publication_date)
-            question.save()
+            question = f.save()
             return redirect('polls:show_dinosaur',
-                question_id=question.pk)
+                            question_id=question.pk)
 
     context = {
         'form': f

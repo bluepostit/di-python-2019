@@ -1,10 +1,14 @@
 {% extends 'polls/base.html' %}
+{% load static %}
 {% block title %}{{ question.question_text }}{% endblock %}
 {% block content %}
 <div class="container">
-	<h1>{{ question.question_text }}</h1>
 	<div class="row">
-		<div class="col-md-2"></div>
+		<img src="{% static 'polls/images/1200px-Question_mark.svg.png' %}" class="question-icon">
+		<span class="h1">{{ question.question_text }}</span>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
 		<div class="col">
 			<div class="list-group">
 				{% for choice in choices.all %}
@@ -15,6 +19,7 @@
 				{% endfor %}
 			</div>	
 		</div>
+		<div class="col-md-1"></div>
 	</div>
 </div>
 {% endblock %}
