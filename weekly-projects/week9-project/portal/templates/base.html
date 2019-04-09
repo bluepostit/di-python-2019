@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  {% block nav %}
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'portal:index' %}">
+      <img src="" />
+      MovieReview<sup>&trade;</sup>
+    </a>
+    <div class="navbar nav-item">
+      <div class="nav-item">
+        {% include 'portal/_nav_search.html' %}
+      </div>
+      {% if request.user.is_authenticated %}
+        <div class="navbar nav-item">
+          <span class="nav-item text-light font-weight-bold">{{ request.user.username }}</span>
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+        </div>
+      {% else %}
+        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+  </nav>
+  {% endblock %}
+  {% block content %}{% endblock %}
+</body>
+</html>

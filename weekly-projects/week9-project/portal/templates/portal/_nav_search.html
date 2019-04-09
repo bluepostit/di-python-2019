@@ -1,0 +1,5 @@
+<form class="form-inline" method="post" action="{% url 'portal:search_reviews' %}">
+  {% csrf_token %}
+  {{ nav_search_form.search_text }}
+  <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button> 
+</form>

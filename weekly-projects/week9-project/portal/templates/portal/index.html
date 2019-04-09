@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}MovieReview{% endblock %}
+{% block content %}
+<div class="container">
+	<h1>Movies</h1>
+	<div class="row">
+		{% for movie in movies %}
+		<div class="col-md-4">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-body">
+					<img src="">
+					<p class="card-header-pills">TITLE</p>
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="btn-group">
+							<a class="btn btn-sm btn-outline-primary" href="URL_TO_SHOW_MOVIE_PAGE">Reviews</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
