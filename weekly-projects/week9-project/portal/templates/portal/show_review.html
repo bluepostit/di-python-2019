@@ -1,1 +1,51 @@
-{# To do: implement template. Display a single MovieReview. #}
+{% extends 'base.html' %}
+{% block title %}Review{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-md-3">
+			<a href="{% url 'portal:show_movie' review.movie.pk %}">
+				<img src="{{ review.movie.cover_url }}" class="movie-cover">
+			</a>
+		</div>
+		<div class="col-md-9">
+			<h1>{{ review.movie.title }} <small>({{ review.movie.year }})</small></h1>
+			<h3><em>A Review by {{ review.user.first_name }} {{ review.user.last_name }}</em></h3>
+			<h2>
+				<span class="h2 mr-2">"{{ review.title }}"</span>
+				<span class="badge badge-pill badge-secondary">{{ review.rating }}/10</span>
+			</h2>
+			<p class="border border-secondary rounded p-3">
+				{{ review.text }}
+			</p>
+
+			<h2>Comments</h2>
+			<div>
+				<h3>Add your voice</h3>
+				<form method="post" action="{% url 'portal:add_comment' %}">
+					<table>
+						<tbody>
+							{% csrf_token %}
+							{{ comment_form }}
+						</tbody>
+					</table>
+					<div>
+						<button class="btn btn-primary" type="submit">Add</button>
+					</div>
+				</form>
+			</div>
+			<ul class="list-group">
+				{% for comment in review.moviereviewcomment_set.all %}
+					<li class="list-group-item">
+						<div>
+							<span class="h5">{{ comment.title }}</span>
+							 <span class="font-italic">&mdash; {{ comment.user.first_name }} {{ comment.user.last_name }}</span>
+						</div>
+						<p>{{ comment.text }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}

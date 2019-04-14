@@ -3,7 +3,14 @@ from django.contrib.auth.models import User
 
 
 class Movie(models.Model):
-    '''To do: implement this model'''
+    rating = models.FloatField()
+    title = models.CharField(max_length=200)
+    year = models.IntegerField()
+    cover_url = models.URLField()
+    imdb_id = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "{} ({})".format(self.title, self.year)
 
 
 class MovieReview(models.Model):
@@ -21,7 +28,14 @@ class MovieReview(models.Model):
         (10, 10)
     )
 
-    # To do: add the relevant fields.
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    rating = models.IntegerField(choices=RATING_CHOICES)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s" % self.text
 
 
 class MovieReviewVote(models.Model):

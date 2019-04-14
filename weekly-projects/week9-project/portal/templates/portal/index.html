@@ -8,11 +8,11 @@
 		<div class="col-md-4">
 			<div class="card mb-4 shadow-sm">
 				<div class="card-body">
-					<img src="">
-					<p class="card-header-pills">TITLE</p>
+					<img src="{{ movie.cover_url }}" class="movie-cover">
+					<p class="card-header-pills">{{ movie.title }}</p>
 					<div class="d-flex justify-content-between align-items-center">
 						<div class="btn-group">
-							<a class="btn btn-sm btn-outline-primary" href="URL_TO_SHOW_MOVIE_PAGE">Reviews</a>
+							<a class="btn btn-sm btn-outline-primary" href="{% url 'portal:show_movie' movie.pk %}">Reviews</a>
 						</div>
 					</div>
 				</div>

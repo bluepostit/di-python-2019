@@ -1,5 +1,7 @@
 from django import forms
-from django.forms import TextInput
+from django.forms import ModelForm, TextInput
+
+from .models import MovieReviewComment as Comment, MovieReview
 
 
 class SearchForm(forms.Form):
@@ -11,3 +13,17 @@ class SearchForm(forms.Form):
             'type': "search"
         })
     )
+
+
+class MovieReviewForm(ModelForm):
+    class Meta:
+        model = MovieReview
+        fields = ['movie', 'title', 'text', 'rating']
+        widgets = {'movie': forms.HiddenInput}
+
+
+class MovieReviewCommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('movie_review', 'title', 'text')
+        widgets = {'movie_review': forms.HiddenInput}

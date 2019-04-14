@@ -57,38 +57,82 @@ def create_movies(delete=False):
         Movie.objects.all().delete()
 
     im = imdb.IMDb()
-    movies = im.get_top250_movies()[0:10]
+    movies = im.get_top250_movies()[0:20]
     for movie in movies:
         print('updating %s' % movie['title'])
         im.update(movie, ['main'])
         print('done')
-        # To do: use the data in `movie` to populate a
-        # new Movie object, then save it.
+        movie_obj = Movie(
+            rating=movie['rating'],
+            title=movie['title'],
+            year=movie['year'],
+            cover_url=movie['full-size cover url'],
+            imdb_id=movie.movieID
+        )
+        movie_obj.save()
 
 
 def create_reviews(delete=False):
     if delete:
         MovieReview.objects.all().delete()
 
-    # To do: create at least one review for each movie.
+    users = User.objects.all()
+
+    faker = Faker()
+    for movie in Movie.objects.all():
+        user = random.choice(users)
+        rating = random.randint(1, 10)
+
+        review = MovieReview(
+            movie=movie,
+            title=faker.sentence(),
+            text=faker.paragraph(),
+            rating=rating,
+            user=user)
+        review.save()
 
 
 def create_comments(delete=False):
     if delete:
         MovieReviewComment.objects.all().delete()
 
-    # To do: create movie comments
+    faker = Faker()
+    for review in MovieReview.objects.all():
+        for user in User.objects.all():
+            if review.user == user:
+                continue
+
+            text = faker.sentence()
+            title = ' '.join(text.split()[0:2])
+
+            comment = MovieReviewComment(
+                movie_review=review,
+                title=title,
+                text=text,
+                user=user)
+            comment.save()
 
 
 def create_votes(delete=False):
     if delete:
         MovieReviewVote.objects.all().delete()
 
-    # To do: create movie votes (up/down)
+    for review in MovieReview.objects.all():
+        for user in User.objects.all():
+            if review.user == user:
+                continue
+
+            value = random.choice(('u', 'd'))
+
+            vote = MovieReviewVote(
+                value=value,
+                movie_review=review,
+                user=user)
+            vote.save()
 
 
 create_users(True)
 create_movies(True)
 create_reviews(True)
-# create_comments(True)
-# create_votes(True)
+create_comments(True)
+create_votes(True)
