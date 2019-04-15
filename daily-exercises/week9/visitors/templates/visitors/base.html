@@ -14,6 +14,28 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
 </head>
 <body>
+	{% block nav %}
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="{% url 'visitors:info' %}">
+			<img src="" />
+			Torquay Towers<sup>&trade;</sup>
+		</a>
+		<div class="navbar nav-item">
+			<div class="nav-item">
+				{#% include 'portal/_nav_search.html' %#}
+			</div>
+			{% if request.user.is_authenticated %}
+			<div class="navbar nav-item">
+				<span class="nav-item text-light font-weight-bold">{{ request.user.username }}</span>
+				<a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+			</div>
+			{% else %}
+			<a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+			{% endif %}
+		</div>
+	</nav>
+	{% endblock %}
+
 	{% block content %}
 
 	{% endblock %}
