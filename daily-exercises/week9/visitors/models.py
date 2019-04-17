@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Q
 from django.contrib.auth.models import User
 
 
@@ -17,11 +16,15 @@ class Room(models.Model):
                    and end date is after C
                OR whose start date is on or after C
                    and start date is before D. '''
-        free_rooms = Room.objects.exclude(
-            Q(booking__start_date__lt=start_date,
-              booking__end_date__gte=start_date) |
-            Q(booking__start_date__gte=start_date,
-              booking__start_date__lte=end_date))
+
+        bookings_a = Booking.objects.filter(
+            start_date__lt=start_date,
+            end_date__gt=start_date)
+        bookings_b = Booking.objects.filter(
+            start_date__gte=start_date,
+            start_date__lte=end_date)
+        free_rooms = Room.objects.exclude(booking__in=bookings_a) \
+            .exclude(booking__in=bookings_b)
         return free_rooms
 
 
