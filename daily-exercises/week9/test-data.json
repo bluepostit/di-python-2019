@@ -1,0 +1,124 @@
+{
+    "customers": [
+        {
+            "username": "test-user-1",
+            "email": "test-user-1@test.test",
+            "password": "test12test34"
+        }
+    ],
+    "rooms": [
+        {
+            "number": "101-test",
+            "price": 100.00
+        },
+        {
+            "number": "102-test",
+            "price": 100.00
+        },
+        {
+            "number": "103-test",
+            "price": 100.00
+        },
+        {
+            "number": "104-test",
+            "price": 100.00
+        },
+        {
+            "number": "105-test",
+            "price": 100.00
+        }
+    ],
+    "bookings": [
+        {
+            "room": "101-test",
+            "username": "test-user-1",
+            "start": "2019-05-01",
+            "end": "2019-05-03"
+        },
+        {
+            "room": "102-test",
+            "username": "test-user-1",
+            "start": "2019-05-01",
+            "end": "2019-05-03"
+        },
+        {
+            "room": "103-test",
+            "username": "test-user-1",
+            "start": "2019-05-06",
+            "end": "2019-05-07"
+        },
+        {
+            "room": "104-test",
+            "username": "test-user-1",
+            "start": "2019-05-01",
+            "end": "2019-05-07"
+        },
+        {
+            "room": "105-test",
+            "username": "test-user-1",
+            "start": "2019-05-01",
+            "end": "2019-05-06"
+        },
+        {
+            "room": "101-test",
+            "username": "test-user-1",
+            "start": "2019-05-08",
+            "end": "2019-05-11"
+        },
+        {
+            "room": "105-test",
+            "username": "test-user-1",
+            "start": "2019-05-12",
+            "end": "2019-05-13"
+        },
+        {
+            "comment": "starts before week; ends after week",
+            "room": "102-test",
+            "username": "test-user-1",
+            "start": "2019-05-06",
+            "end": "2019-05-23"
+        }
+    ],
+    "free rooms": [
+        {
+            "start": "2019-05-01",
+            "end": "2019-05-07",
+            "free rooms": 0
+        },
+        {
+            "start": "2019-05-08",
+            "end": "2019-05-14",
+            "free rooms": 2
+        },
+        {
+            "start": "2019-05-15",
+            "end": "2019-05-21",
+            "free rooms": 4
+        },
+        {
+            "start": "2019-05-22",
+            "end": "2019-05-28",
+            "free rooms": 4
+        },
+        {
+            "start": "2019-05-01",
+            "end": "2019-05-01",
+            "free rooms": 1
+        },
+        {
+            "start": "2019-05-02",
+            "end": "2019-05-02",
+            "free rooms": 1
+        },
+        {
+            "start": "2019-05-03",
+            "end": "2019-05-03",
+            "free rooms": 2
+        },
+        {
+            "start": "2019-05-04",
+            "end": "2019-05-04",
+            "free rooms": 3
+        }
+    ]
+}
