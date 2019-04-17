@@ -127,4 +127,5 @@ def test_get_free_rooms(test_data):
     for item in free_room_data:
         print(item)
         free_rooms = Room.get_free_rooms(item['start'], item['end'])
+        print(free_rooms)
         assert free_rooms.count() == item['free rooms']

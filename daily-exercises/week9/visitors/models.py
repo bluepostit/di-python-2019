@@ -19,7 +19,7 @@ class Room(models.Model):
                    and start date is before D. '''
         free_rooms = Room.objects.exclude(
             Q(booking__start_date__lt=start_date,
-              booking__end_date__gt=start_date) |
+              booking__end_date__gte=start_date) |
             Q(booking__start_date__gte=start_date,
               booking__start_date__lte=end_date))
         return free_rooms
