@@ -3,16 +3,16 @@ from datetime import datetime, timedelta
 from django.db import models
 from django.contrib.auth.models import User
 
+from .calendar import Util
+
 
 def ensure_is_datetime(date):
     if isinstance(date, str):
-        date = datetime.strptime(date, Room.DATE_FORMAT)
+        date = datetime.strptime(date, Util.DATE_FORMAT)
     return date
 
 
 class Room(models.Model):
-    DATE_FORMAT = '%Y-%m-%d'
-
     number = models.CharField(max_length=50)
     price = models.FloatField()
 
@@ -56,7 +56,7 @@ class Room(models.Model):
         d = start_date
         while d <= end_date:
             rooms = Room.get_free_rooms(d, d)
-            d_string = d.strftime(Room.DATE_FORMAT)
+            d_string = d.strftime(Util.DATE_FORMAT)
             frees[d_string] = rooms.count()
             d = d + timedelta(days=1)
 

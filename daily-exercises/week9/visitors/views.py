@@ -3,7 +3,7 @@ from datetime import datetime
 
 from django.shortcuts import render
 
-from .calendar import CalendarEvent, HTMLEventCalendar, Util
+from .calendar import HTMLEventCalendar, Util
 from .models import Room
 
 
@@ -20,10 +20,11 @@ def show_vacancies(request):
     start_date = Util.get_month_start_date(now)
     end_date = Util.get_month_end_date(now)
     free_rooms = Room.get_free_rooms(start_date, end_date, daily=True)
-    print(free_rooms)
-    cal = calendar.HTMLCalendar(calendar.SUNDAY)
+    for date, rooms_count in free_rooms.items():
+        free_rooms[date] = "{} rooms".format(rooms_count)
+
+    cal = HTMLEventCalendar(calendar.SUNDAY, events=free_rooms)
     context = {
-        'calendar': str(cal.formatmonth(now.year, now.month))
+        'calendar': cal.formatmonth(now.year, now.month)
     }
-    print(context)
     return render(request, 'visitors/vacancies.html', context)

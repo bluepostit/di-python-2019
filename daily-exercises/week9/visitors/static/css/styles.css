@@ -1,0 +1,17 @@
+table.month td {
+	padding: 10px;
+	border: 1px #000 solid;
+	border-radius: 10px;
+}
+
+table.month th.month {
+	text-align: center;
+}
+
+.calendar-event {
+	font-weight: bold;
+}
+
+table.month td .day-number {
+	text-align: right;
+}

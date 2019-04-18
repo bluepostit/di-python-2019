@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,15 +12,19 @@
 	<!-- Bootstrap 4 -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<!-- Material Design Bootstrap -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
+	<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet"> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 	{% block nav %}
 	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="{% url 'visitors:info' %}">
-			<img src="" />
-			Torquay Towers<sup>&trade;</sup>
-		</a>
+		<div class="navbar navbar-item">
+			<a class="navbar-brand" href="{% url 'visitors:info' %}">
+				<img src="" />
+				Torquay Towers<sup>&trade;</sup>
+			</a>
+			<a class="navbar navbar-item" href="{% url 'visitors:vacancies' %}">Vacancies</a>
+		</div>
 		<div class="navbar nav-item">
 			<div class="nav-item">
 				{#% include 'portal/_nav_search.html' %#}
