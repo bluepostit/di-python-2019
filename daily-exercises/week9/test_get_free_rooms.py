@@ -127,3 +127,16 @@ def test_get_free_rooms(test_data):
     for item in free_room_data:
         free_rooms = Room.get_free_rooms(item['start'], item['end'])
         assert free_rooms.count() == item['free rooms']
+
+
+def test_get_free_rooms_daily(test_data):
+    setup_objects(test_data)
+
+    daily_free_room_data = test_data['free rooms daily']
+    for data in daily_free_room_data:
+        start_date = data['start']
+        end_date = data['end']
+        free_room_data = data['free rooms']
+        free_rooms = Room.get_free_rooms(start_date, end_date, daily=True)
+        for day, amt_free in free_rooms.items():
+            assert free_room_data[str(day)] == amt_free

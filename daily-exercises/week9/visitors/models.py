@@ -1,8 +1,18 @@
+from datetime import datetime, timedelta
+
 from django.db import models
 from django.contrib.auth.models import User
 
 
+def ensure_is_datetime(date):
+    if isinstance(date, str):
+        date = datetime.strptime(date, Room.DATE_FORMAT)
+    return date
+
+
 class Room(models.Model):
+    DATE_FORMAT = '%Y-%m-%d'
+
     number = models.CharField(max_length=50)
     price = models.FloatField()
 
@@ -10,12 +20,18 @@ class Room(models.Model):
         return "room #{}".format(self.number)
 
     @staticmethod
-    def get_free_rooms(start_date, end_date):
+    def get_free_rooms(start_date, end_date, **kwargs):
         '''get all rooms without bookings whose:
                start date is before C,
                    and end date is after C
                OR whose start date is on or after C
                    and start date is before D. '''
+
+        if 'daily' in kwargs and (kwargs['daily']):
+            return Room.get_daily_free_rooms(start_date, end_date)
+
+        start_date = ensure_is_datetime(start_date)
+        end_date = ensure_is_datetime(end_date)
 
         bookings_a = Booking.objects.filter(
             start_date__lt=start_date,
@@ -26,6 +42,25 @@ class Room(models.Model):
         free_rooms = Room.objects.exclude(booking__in=bookings_a) \
             .exclude(booking__in=bookings_b)
         return free_rooms
+
+    def get_daily_free_rooms(start_date, end_date):
+        '''Get a dictionary mapping date strings to the amount of free
+        rooms available on that day.'''
+
+        start_date = ensure_is_datetime(start_date)
+        end_date = ensure_is_datetime(end_date)
+
+        if end_date < start_date:
+            raise Exception("start date must precede end date")
+        frees = {}
+        d = start_date
+        while d <= end_date:
+            rooms = Room.get_free_rooms(d, d)
+            d_string = d.strftime(Room.DATE_FORMAT)
+            frees[d_string] = rooms.count()
+            d = d + timedelta(days=1)
+
+        return frees
 
 
 class Booking(models.Model):
