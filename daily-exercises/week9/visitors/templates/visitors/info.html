@@ -6,11 +6,19 @@
 
 <main role="main">
 	<section class="jumbotron text-center">
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+
 		<div class="container">
 			<h1 class="jumbotron-heading display-3">Welcome to Torquay Towers.</h1>
 			<p class="lead text-muted">Nestled in the hills of the picturesque English Riviera, Torquay Towers offers guests a taste of the peaceful, scenic English countryside at affordable rates.</p>
 			<p>
-				<a href="#" class="btn btn-primary my-2">Book a Stay</a>
+				<a href="{% url 'visitors:make_booking' %}" class="btn btn-primary my-2">Book a Stay</a>
 				<a href="#" class="btn btn-secondary my-2">Contact Us</a>
 				<a href="#" class="btn btn-secondary my-2">Reviews</a>
 			</p>
